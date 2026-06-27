@@ -1,28 +1,10 @@
-'use client';
-
-import { useSearchParams } from 'next/navigation';
-
+import { Suspense } from "react";
+import LivePlayer from "./LivePlayer";
 
 export default function Page() {
-  const searchParams = useSearchParams();
-
-  const urlFull = searchParams.get('uri');
-  const uriId = searchParams.get('uriId')||"";
-    let uri = urlFull
-    if(!urlFull){
-        uri = 'https://dami-tv.pro/embed/?id='+uriId
-    }
-
-    console.log(uri)
- 
   return (
-    <div className="h-[100dvh] w-full bg-black">
-      <iframe
-        src={uri}
-        className="w-full h-full border-0"
-        allow="fullscreen"
-        allowFullScreen
-      />
-    </div>
+    <Suspense fallback={<div>Loading...</div>}>
+      <LivePlayer />
+    </Suspense>
   );
 }
