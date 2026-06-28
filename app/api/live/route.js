@@ -24,7 +24,7 @@ export async function GET(request) {
         }
     })
 
-    const data2 = myData2?.streams?.map((itm)=>{
+    const data2 = myData2?.map((itm)=>{
         return {
             name:itm?.category,
             title:itm?.title,
